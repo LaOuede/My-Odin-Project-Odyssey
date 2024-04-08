@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/LaOuede/odin-project-badges/blob/main/badges/recipes.png" />
+  <img src="./images/odin-project.png" />
 </p>
 
 <h1 align=center>Odin Recipes</h1>
