@@ -61,8 +61,7 @@ function playGame() {
             const winner = playRound(human_selection, computer_selection);
             if (winner === 'human') {
                 human_score++;
-            }
-            if (winner === 'computer') {
+            } else if (winner === 'computer') {
                 computer_score++;
             }
             console.log(`Your score: ${human_score} - Computer's score: ${computer_score}`)
@@ -70,9 +69,7 @@ function playGame() {
             if (human_score === 3) {
                 human_rounds++
                 console.log(`You win the round! :) - Score is ${human_rounds} - ${computer_rounds}`)
-            }
-            
-            if (computer_score === 3) {
+            } else if (computer_score === 3) {
                 computer_rounds++
                 console.log(`Oh no! You lose the round :( - Score is ${human_rounds} - ${computer_rounds}`)
             }
