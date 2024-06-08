@@ -25,18 +25,19 @@
 <h2 align="center">Progress 📚</h2>
 <h3 align="left">Web Development Fundamentals - Foundations Course</h3>
 
-- [x] Introduction to HTML
-- [ ] CSS Fundamentals
-- [ ] Responsive Web Design
-
-<h3 align="left">JavaScript</h3>
-
-- [x] JavaScript Fundamentals
-- [ ] Object-Oriented Programming
-- [ ] Asynchronicity and Promises
-- [ ] Front-End Frameworks: React and Redux
+- [x] HTML Fundamentals
+- [x] CSS Fundamentals
+- [x] CSS : Flexbox
+- [ ] JavaScript Fundamentals
 
 <h3 align="left">Full Stack JavaScript</h3>
 
+- [ ] CSS : Grid and Forms
+- [ ] JavaScript
+- [ ] Asynchronicity and Promises
+- [ ] Git
+- [ ] Testing
+- [ ] Accessibility
+- [ ] Responsive Design
 - [ ] React
 - [ ] NodeJS
