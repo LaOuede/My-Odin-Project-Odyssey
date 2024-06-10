@@ -1,0 +1,72 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #1F2937;
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    background-color: #2B2B2B;
+    color: white;
+    text-align: center;
+    font-family: "Uncial Antiqua", system-ui;
+}
+
+#options {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.uncial-antiqua-regular {
+    font-family: "Uncial Antiqua", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h3 {
+    font-size: x-large;
+}
+
+#Rock, #Paper, #Scissors {
+    height: 20vh;
+    border-style: solid;
+    border-radius: 8px;
+    border-color: blueviolet;
+    border-width: 4px;
+    cursor: pointer;
+}
+
+button {
+    color: white;
+    font-family: "Uncial Antiqua", system-ui;
+    background-color: blueviolet;
+    padding: auto;
+    border-style: solid;
+    border-radius: 8px;
+    border-color: blueviolet;
+    border-width: 4px;
+    cursor: pointer;
+}
+
+footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    color: #E5E7EB;
+    background-color: #1F2937;
+    padding: 10px;
+}
+
+.banner {
+    align-self: center;
+    height: 33vh;
+    object-fit: cover;
+}
