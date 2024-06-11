@@ -5,7 +5,6 @@ const container = document.querySelector('.container');
 
 container.addEventListener('mouseover', (event) => {
         const square = event.target;
-        console.log(event.target);
 
         if (event.target.className === 'square') {
             square.style.backgroundColor = color;
@@ -26,10 +25,8 @@ function drawCanva(size) {
             const square = document.createElement('div');
             square.classList.add('square');
             const squareSize = 960 / size;
-            console.log(squareSize);
 
             square.style.width = squareSize + 'px';
-            console.log(square.style.width);
             row.appendChild(square);
         }
     }
@@ -81,11 +78,13 @@ let purpleBtn = document.createElement('button');
 purpleBtn.style.backgroundColor = 'Purple';
 colors.appendChild(purpleBtn);
 
+let whiteBtn = document.createElement('button');
+whiteBtn.style.backgroundColor = 'White';
+colors.appendChild(whiteBtn);
+
 // const colorBtn = document.querySelector('.color');
 
 colors.addEventListener('click', (event) => {
-    console.log('Ici!');
     let choice = event.target;
-    console.log(choice);
     color = choice.style.backgroundColor;
 });
