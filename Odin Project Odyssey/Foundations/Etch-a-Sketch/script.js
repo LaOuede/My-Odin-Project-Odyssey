@@ -1,15 +1,17 @@
+// Global Variables
+let size = 0;
 let color = 'purple';
+
 
 // MouseOver Color handling
 const container = document.querySelector('.container');
 
 container.addEventListener('mouseover', (event) => {
-        const square = event.target;
-
-        if (event.target.className === 'square') {
-            square.style.backgroundColor = color;
-        }
+    if (event.target.className === 'square') {
+        event.target.style.backgroundColor = color;
+    }
 });
+
 
 // Canva drawing
 function drawCanva(size) {
@@ -33,19 +35,19 @@ function drawCanva(size) {
 
 }
 
-// Get Size
-let size = 0;
 
+// Get Size
 const header = document.querySelector('header');
 let sizeBtn = document.createElement('button');
 sizeBtn.textContent = 'Choose canva size';
 header.appendChild(sizeBtn);
 
 sizeBtn.addEventListener('click', () => {
-    container.innerHTML = '';
     size = prompt("what size of canvas do you want?");
+    container.innerHTML = '';
     drawCanva(size);
 })
+
 
 // Clear the board
 let clearBtn = document.createElement('button');
@@ -57,34 +59,19 @@ clearBtn.addEventListener('click', () => {
     drawCanva(size);
 });
 
+
 // Color modification
 const colors = document.createElement('div');
 colors.classList.add('colors');
 header.appendChild(colors);
 
-let redBtn = document.createElement('button');
-redBtn.style.backgroundColor = 'Red';
-colors.appendChild(redBtn);
-
-let blueBtn = document.createElement('button');
-blueBtn.style.backgroundColor = 'Blue';
-colors.appendChild(blueBtn);
-
-let yellowBtn = document.createElement('button');
-yellowBtn.style.backgroundColor = 'Yellow';
-colors.appendChild(yellowBtn);
-
-let purpleBtn = document.createElement('button');
-purpleBtn.style.backgroundColor = 'Purple';
-colors.appendChild(purpleBtn);
-
-let whiteBtn = document.createElement('button');
-whiteBtn.style.backgroundColor = 'White';
-colors.appendChild(whiteBtn);
-
-// const colorBtn = document.querySelector('.color');
+const colorOptions = ['Red', 'Blue', 'Yellow', 'Purple', 'White'];
+colorOptions.forEach(item => {
+    let colorBtn = document.createElement('button');
+    colorBtn.style.backgroundColor = item;
+    colors.appendChild(colorBtn);
+});
 
 colors.addEventListener('click', (event) => {
-    let choice = event.target;
-    color = choice.style.backgroundColor;
+    color = event.target.style.backgroundColor;
 });
