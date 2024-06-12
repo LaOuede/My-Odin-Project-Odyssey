@@ -1,14 +1,10 @@
-const person = {
-	name: {
-		first: "Bob",
-		last: "Smith",
-	},
-	age: 32,
-	bio: function () {
-	  console.log(`${this.name[0]} ${this.name[1]} is ${this.age} years old.`);
-	},
-	introduceSelf: function () {
-	  console.log(`Hi! I'm ${this.name[0]}.`);
-	},
-  };
-  
+const array = [1, 4, 5, 8, 54, 42, 89];
+
+function sumOfTripledEvens(array) {
+	return array
+		.filter((num) => num % 2 === 0)
+		.map((num) => num * 3)
+		.reduce((acc, curr) => acc + curr);
+}
+
+  console.log(sumOfTripledEvens(array));
