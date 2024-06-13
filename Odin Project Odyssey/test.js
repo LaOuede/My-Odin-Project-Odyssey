@@ -1,10 +1,33 @@
-const array = [1, 4, 5, 8, 54, 42, 89];
+let users = [
+	{id: 'john', name: "John Smith", age: 20},
+	{id: 'ann', name: "Ann Smith", age: 24},
+	{id: 'pete', name: "Pete Peterson", age: 31},
+  ];
+  
+//   function groupById(array) {
+// 	return array.reduce((obj, value) => {
+// 		obj[value.id] = value;
+// 		return obj;
+//   	}, {});
+//   }
 
-function sumOfTripledEvens(array) {
-	return array
-		.filter((num) => num % 2 === 0)
-		.map((num) => num * 3)
-		.reduce((acc, curr) => acc + curr);
+function groupById(array) {
+	return array.reduce((obj, value) => {
+		obj[value.id] = value;
+		return obj;
+  	}, {});
 }
 
-  console.log(sumOfTripledEvens(array));
+  let usersById = groupById(users);
+
+  console.log(usersById);
+  
+  /*
+  // after the call we should have:
+  
+  usersById = {
+	john: {id: 'john', name: "John Smith", age: 20},
+	ann: {id: 'ann', name: "Ann Smith", age: 24},
+	pete: {id: 'pete', name: "Pete Peterson", age: 31},
+  }
+  */
