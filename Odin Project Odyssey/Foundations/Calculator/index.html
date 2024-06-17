@@ -1,52 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Calculator</title>
-		<link rel="stylesheet" href="styles.css">
-		<script src="script.js" defer></script>
-	</head>
-	<body>
-		<header>
-			<h1>Calculator</h1>
-		</header>
-		<div class="container">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Calculator</title>
+	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<header>
+		<h1>Calculator</h1>
+	</header>
+	<div class="container">
+		<div class="calculator">	
 			<div class="display">
 				<p class="displayed">0</p>
 			</div>
-			<div class="calculator">	
-				<div class="line" id="line1">	
-					<button class="clear">Clear</button>
-					<button class="operators" id="divide">/</button>
-				</div>
-				<div class="line" id="line2">
-					<button class="numbers">7</button>
-					<button class="numbers">8</button>
-					<button class="numbers">9</button>
-					<button class="operators" id="multiply">×</button>
-				</div>
-				<div class="line" id="line3">	
-					<button class="numbers">4</button>
-					<button class="numbers">5</button>
-					<button class="numbers">6</button>
-					<button class="operators" id="substract">-</button>
-				</div>
-				<div class="line" id="line4">	
-					<button class="numbers">1</button>
-					<button class="numbers">2</button>
-					<button class="numbers">3</button>
-					<button class="operators" class="add">+</button>
-				</div>
-				<div class="line" id="line5">	
-					<button class="numbers" id="zero">0</button>
-					<button class="dot">.</button>
-					<button class="equal">=</button>
-				</div>
+			<div class="line" id="line1">	
+				<button class="clear">Clear</button>
+				<button class="back">←</button>
+				<button class="operators" id="divide">/</button>
+			</div>
+			<div class="line" id="line2">
+				<button class="numbers">7</button>
+				<button class="numbers">8</button>
+				<button class="numbers">9</button>
+				<button class="operators" id="multiply">×</button>
+			</div>
+			<div class="line" id="line3">	
+				<button class="numbers">4</button>
+				<button class="numbers">5</button>
+				<button class="numbers">6</button>
+				<button class="operators" id="substract">-</button>
+			</div>
+			<div class="line" id="line4">	
+				<button class="numbers">1</button>
+				<button class="numbers">2</button>
+				<button class="numbers">3</button>
+				<button class="operators" class="add">+</button>
+			</div>
+			<div class="line" id="line5">	
+				<button class="numbers" id="zero">0</button>
+				<button class="dot">.</button>
+				<button class="equal">=</button>
 			</div>
 		</div>
-		<footer>
-			<p>Copyright © Gwenola Le Roux - The Odin Project</p>
-		</footer>
-	</body>
+	</div>
+	<footer>
+		<p>Copyright © 
+			<script>document.write(new Date().getFullYear())</script>
+			- LaOuede 
+			<a href="https://github.com/LaOuede" target="_blank"><i class="fab fa-github"></i></a>
+		</p>
+		<p>The Odin Project</p>
+	</footer>
+</body>
 </html>

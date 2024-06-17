@@ -33,7 +33,7 @@ function divide(nb1, nb2) {
 let operator = '';
 let nb1 = '';
 let nb2 = '';
-let solution = '';
+let solution = 0;
 let dotState = false;
 
 // operate function
@@ -74,7 +74,7 @@ buttons.forEach((btn) => {
 			if (nb1 != '' && nb2 != '') {
 				display.innerHTML = '';
 				solution = operate(operator, parseFloat(nb1), parseFloat(nb2));
-				toDisplay.textContent = solution;
+				toDisplay.textContent = Number.isInteger(solution) ? solution : solution.toFixed(2);
 				nb1 = solution;
 				nb2 = '';
 				display.appendChild(toDisplay);
@@ -89,6 +89,24 @@ buttons.forEach((btn) => {
 				toDisplay.textContent = nb1;
 			} else {
 				nb2 += event.target.textContent;
+				toDisplay.textContent = nb2;
+			}
+			display.appendChild(toDisplay);
+		} else if (event.target.className === 'back') {
+			display.innerHTML = '';
+			if (operator === '') {
+				nb1 = nb1.slice(0, nb1.length - 1);
+				console.log(nb1);
+				if (nb1 === '') {
+					nb1 = '0';
+				}
+				toDisplay.textContent = nb1;
+			} else {
+				nb2 = nb2.slice(0, nb2.length - 1);
+				console.log(nb2);
+				if (nb2 === '') {
+					nb2 = '0';
+				}
 				toDisplay.textContent = nb2;
 			}
 			display.appendChild(toDisplay);
