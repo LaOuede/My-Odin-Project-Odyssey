@@ -35,7 +35,6 @@ let nb1 = '';
 let nb2 = '';
 let solution = 0;
 let dotState = false;
-let zeroState = false;
 
 // operate function
 function operate(operator, nb1, nb2) {
