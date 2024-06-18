@@ -24,7 +24,7 @@ function multiply(nb1, nb2) {
 
 function divide(nb1, nb2) {
 	if (nb1 === 0 || nb2 === 0) {
-		return 'Really?!';
+		return 'You can\'t divide by 0 !';
 	}
 	return nb1 / nb2;
 }
@@ -35,6 +35,7 @@ let nb1 = '';
 let nb2 = '';
 let solution = 0;
 let dotState = false;
+let zeroState = false;
 
 // operate function
 function operate(operator, nb1, nb2) {
@@ -58,12 +59,26 @@ buttons.forEach((btn) => {
 		const toDisplay = document.createElement('p');
 		toDisplay.className = 'displayed';
 		if (event.target.className === 'numbers' && operator === '') {
+			if (nb1 === '0' && event.target.textContent != '.') {
+				display.innerHTML = '';
+				nb1 = event.target.textContent;
+				toDisplay.textContent = nb1;
+				display.appendChild(toDisplay);
+				return;
+			}
 			display.innerHTML = '';
 			nb1 += event.target.textContent;
 			toDisplay.textContent = nb1;
 			display.appendChild(toDisplay);
 			console.log(nb1);
 		} else if (event.target.className === 'numbers' && operator != '') {
+			if (nb2 === '0' && event.target.textContent != '.') {
+				display.innerHTML = '';
+				nb2 = event.target.textContent;
+				toDisplay.textContent = nb2;
+				display.appendChild(toDisplay);
+				return;
+			}
 			display.innerHTML = '';
 			nb2 += event.target.textContent;
 			toDisplay.textContent = nb2;
@@ -85,9 +100,15 @@ buttons.forEach((btn) => {
 			display.innerHTML = '';
 			dotState = true;
 			if (operator === '') {
+				if (nb1 === '') {
+					nb1 += 0;
+				}
 				nb1 += event.target.textContent;
 				toDisplay.textContent = nb1;
 			} else {
+				if (nb2 === '') {
+					nb2 += 0;
+				}
 				nb2 += event.target.textContent;
 				toDisplay.textContent = nb2;
 			}
