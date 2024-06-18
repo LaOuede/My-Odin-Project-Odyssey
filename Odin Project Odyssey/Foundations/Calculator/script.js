@@ -1,4 +1,6 @@
-// global variables
+// *************************************************
+// *               global variables                *
+// *************************************************
 let operator = '';
 let nb1 = '';
 let nb2 = '';
@@ -12,7 +14,6 @@ operation = {
 	'/' : 4
 };
 
-const buttons = document.querySelectorAll('button');
 const numbersBtn = document.querySelectorAll('.numbers');
 const operatorsBtn = document.querySelectorAll('.operators');
 const display = document.querySelector('.display');
@@ -22,6 +23,9 @@ const equalBtn = document.querySelector('.equal');
 const clearBtn = document.querySelector('.clear');
 
 
+// *************************************************
+// *                   functions                   *
+// *************************************************
 // basic operations
 function add(nb1, nb2) {
 	return nb1 + nb2;
@@ -60,36 +64,57 @@ function operate(operator, nb1, nb2) {
 	}
 };
 
+// reset var
+function resetVar() {
+	operator = '';
+	nb1 = '';
+	nb2 = '';
+	dotState = false;
+}
 
-// Events Listener
+// Append Number
+function appendNumber(isFirst, event) {
+	const toDisplay = document.createElement('p');
+	toDisplay.className = 'displayed';
+	
+	let number = isFirst ? nb1 : nb2;
+	
+	if (number === '0' && event.target.textContent != '.') {
+		display.innerHTML = '';
+		number = event.target.textContent;
+		toDisplay.textContent = number;
+		display.appendChild(toDisplay);
+		return;
+	}
+	display.innerHTML = '';
+	number += event.target.textContent;
+	toDisplay.textContent = number;
+	display.appendChild(toDisplay);
+	
+	isFirst ? (nb1 = number) : (nb2 = number);
+}
+
+// check if var is empty
+function isEmpty(isFirst) {
+	let number = isFirst ? nb1 : nb2;
+
+	if (number === '') {
+		number += 0;
+	}
+
+	isFirst ? (nb1 = number) : (nb2 = number);
+}
+
+
+// *************************************************
+// *                events listener                *
+// *************************************************
 numbersBtn.forEach((btn) => {
 	btn.addEventListener('click', (event) => {
-		const toDisplay = document.createElement('p');
-		toDisplay.className = 'displayed';
-		if (operator === '') {
-			if (nb1 === '0' && event.target.textContent != '.') {
-				display.innerHTML = '';
-				nb1 = event.target.textContent;
-				toDisplay.textContent = nb1;
-				display.appendChild(toDisplay);
-				return;
-			}
-			display.innerHTML = '';
-			nb1 += event.target.textContent;
-			toDisplay.textContent = nb1;
-			display.appendChild(toDisplay);
-		} else {
-			if (nb2 === '0' && event.target.textContent != '.') {
-				display.innerHTML = '';
-				nb2 = event.target.textContent;
-				toDisplay.textContent = nb2;
-				display.appendChild(toDisplay);
-				return;
-			}
-			display.innerHTML = '';
-			nb2 += event.target.textContent;
-			toDisplay.textContent = nb2;
-			display.appendChild(toDisplay);
+	if (operator === '') {
+		appendNumber(true, event);
+	} else {
+		appendNumber(false, event);
 		}
 	});
 });
@@ -122,15 +147,11 @@ dotBtn.addEventListener('click', (event) => {
 		display.innerHTML = '';
 		dotState = true;
 		if (operator === '') {
-			if (nb1 === '') {
-				nb1 += 0;
-			}
+			isEmpty(true);
 			nb1 += event.target.textContent;
 			toDisplay.textContent = nb1;
 		} else {
-			if (nb2 === '') {
-				nb2 += 0;
-			}
+			isEmpty(false);
 			nb2 += event.target.textContent;
 			toDisplay.textContent = nb2;
 		}
@@ -141,19 +162,15 @@ dotBtn.addEventListener('click', (event) => {
 backBtn.addEventListener('click', () => {
 	const toDisplay = document.createElement('p');
 	toDisplay.className = 'displayed';
-
+	
 	display.innerHTML = '';
 	if (operator === '') {
 		nb1 = nb1.slice(0, nb1.length - 1);
-		if (nb1 === '') {
-			nb1 = '0';
-		}
+		isEmpty(true);
 		toDisplay.textContent = nb1;
 	} else {
 		nb2 = nb2.slice(0, nb2.length - 1);
-		if (nb2 === '') {
-			nb2 = '0';
-		}
+		isEmpty(false);
 		toDisplay.textContent = nb2;
 	}
 	display.appendChild(toDisplay);
@@ -166,12 +183,13 @@ equalBtn.addEventListener('click', () => {
 	if (nb1 != '' && nb2 != '' && operator != '') {
 		display.innerHTML = '';
 		solution = operate(operator, parseFloat(nb1), parseFloat(nb2));
-		toDisplay.textContent = Number.isInteger(solution) ? solution : solution.toFixed(2);
+		if (typeof solution === 'string') {
+			toDisplay.textContent = solution;
+		} else {
+			toDisplay.textContent = Number.isInteger(solution) ? solution : solution.toFixed(2);
+		}
 		display.appendChild(toDisplay);
-		operator = '';
-		nb1 = '';
-		nb2 = '';
-		dotState = false;
+		resetVar();
 	}
 });
 
@@ -180,10 +198,7 @@ clearBtn.addEventListener('click', () => {
 	toDisplay.className = 'displayed';
 
 	display.innerHTML = '';
-	operator = '';
-	nb1 = '';
-	nb2 = '';
-	dotState = false;
+	resetVar();
 	toDisplay.textContent = '0';
 	display.appendChild(toDisplay);
 });
