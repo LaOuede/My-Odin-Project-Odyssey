@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css"></link>
+	<script src="script.js" defer></script>
+	<title>Sign-up Form</title>
+</head>
+<body>
+	<div class="content">
+
+		<div class="media">
+			<div class="banner">
+				<div class="logo">
+					<img src="images/odin-lined.png" alt="logo" class="logo-image"/>
+				</div>
+				<div class="title">ODIN</div>
+			</div>
+			<div class="credits">Image generated with AI</div>
+		</div>
+		<div class="text">
+			<div class="header">
+				<p>This is not a real online service!
+					Facilisi nullam vehicula ipsum a arcu cursus vitae congue mauris rhoncus aenean.
+					<br>Sign up <em>now</em> to get started.
+				</p>
+				<p>
+					You <em>know</em> you want to.
+				</p>
+			</div>
+			<div class="form">
+				<p class="form-title">Let's do this!</p>
+				<form id="myform" class="informations">
+					<div class="element">
+						<div>
+							<label for="firstname">FIRST NAME</label>
+						</div>
+						<input type="text" id="firstname" name="firstname" required>
+					</div>
+					<div class="element">
+						<div>
+							<label for="lastname">LAST NAME</label>
+						</div>
+						<input type="text" id="lastname" name="lastname" required>
+					</div>
+					<div class="element">
+						<div>
+							<label for="email">EMAIL</label>
+						</div>
+						<input type="email" id="email" name="email" placeholder="example@mail.com" required>
+					</div>
+					<div class="element">
+						<div>
+							<label for="phone">PHONE NUMBER</label>
+						</div>
+						<input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-123-1234">
+					</div>
+					<div class="element">
+						<div>
+							<label for="password">PASSWORD</label>
+						</div>
+						<input type="password" id="password" name="password" minlength="8" required>
+					</div>
+					<div class="element">
+						<div>
+							<label for="password_validation">CONFIRM PASSWORD</label>
+						</div>
+						<input type="password" id="password_validation" name="password_validation" required>
+					</div>
+				</form>
+			</div>
+			<div class="footer">
+				<div>
+					<button type="submit" class="account_button" form="myform">Create Account</button>
+				</div>
+				<div class="already_account">
+					<p>Already have an account?</p>
+					<a href="#" class="account_link">Log in</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
