@@ -1,51 +1,27 @@
-body {
-	font: 1em sans-serif;
-	width: 200px;
-	padding: 0;
-	margin: 0 auto;
+.grid-container {
+	resize: both;
+	overflow: auto;
+	display: grid;
+	gap: 4px;
+	padding: 4px;
+	border: 1px solid grey;
+	background-color: skyblue;
+	grid-template-rows: repeat(2, 1fr);
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));  }
+  
+  .grid-item {
+	background-color: #444;
+	text-align: center;
+	color: #ddd;
+	font-family: sans-serif;
+	font-size: 1.5rem;
+	padding: 12px;
   }
   
-  p * {
-	display: block;
+  p {
+	margin: 12px auto 24px;
   }
   
-  input[type="email"] {
-	appearance: none;
-  
-	width: 100%;
-	border: 1px solid #333;
-	margin: 0;
-  
-	font-family: inherit;
-	font-size: 90%;
-  
-	box-sizing: border-box;
+  img {
+	height: 60px;
   }
-  
-  /* This is our style for the invalid fields */
-  input:invalid {
-	border-color: #900;
-	background-color: #fdd;
-  }
-  
-  input:focus:invalid {
-	outline: none;
-  }
-  
-  /* This is the style of our error messages */
-  .error {
-	width: 100%;
-	padding: 0;
-  
-	font-size: 80%;
-	color: white;
-	background-color: #900;
-	border-radius: 0 0 5px 5px;
-  
-	box-sizing: border-box;
-  }
-  
-  .error.active {
-	padding: 0.3em;
-  }
-  
