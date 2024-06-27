@@ -93,9 +93,15 @@ addBtn.addEventListener('click', () => {
 })
 
 cancelBtn.addEventListener('click', (event) => {
-	event.preventDefault();
 	dialog.close();
 	document.body.classList.remove('dialog-open');
+});
+
+document.addEventListener('keydown', (event) => {
+	if (event.key === 'Escape') {
+		dialog.close();
+		document.body.classList.remove('dialog-open');
+	}
 });
 
 document.addEventListener('DOMContentLoaded', () => {
