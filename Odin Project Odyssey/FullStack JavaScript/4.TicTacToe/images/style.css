@@ -33,3 +33,11 @@ body {
 	cursor: pointer;
 	background-color: rgba(125, 125, 125, 0.5);
 }
+
+.no-click {
+	pointer-events: none;
+}
+
+#new {
+	visibility: hidden;
+}
