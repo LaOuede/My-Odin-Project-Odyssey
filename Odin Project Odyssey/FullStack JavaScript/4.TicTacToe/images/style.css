@@ -1,0 +1,30 @@
+html, body {
+	height: 100%;
+	margin: 0;
+}
+
+body {
+	display: grid;
+	justify-items: center;
+}
+.title {
+	height: 15%;
+}
+
+.grid {
+	height: 500px;
+	width: 500px;
+	display: grid;
+	grid-template: 3fr, 1fr;
+	border: 1px solid black;
+}
+
+.line {
+	display: grid;
+	grid-template-rows: 1fr;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+}
+
+.box {
+	border: 1px solid black;
+}
