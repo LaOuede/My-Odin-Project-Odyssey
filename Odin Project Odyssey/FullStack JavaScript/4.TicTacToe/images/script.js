@@ -25,7 +25,7 @@ const gameboard = (function() {
 			}
 			board.push(line);
 		}
-		console.log(getBoard);
+		console.log(gameboard.getBoard());
 	};
 
 	return { getBoard, displayGameboard };
