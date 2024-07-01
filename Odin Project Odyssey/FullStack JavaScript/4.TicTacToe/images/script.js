@@ -25,7 +25,7 @@ const gameboard = (function() {
 			}
 			board.push(line);
 		}
-		console.log(getBoard);
+		console.log(gameboard.getBoard);
 	};
 
 	return { getBoard, displayGameboard };
@@ -75,15 +75,31 @@ const gameController = (function() {
 	};
 
 	function playGame() {
-		
-		do {
-			switchPlayer();
-			tickCase(prompt(`${activePlayer.name}, which case do you want to tick?`), activePlayer.marker);
-			gameboard.displayGameboard();
-		} while (!checkWinCondition(tickedCase, activePlayer.marker));
+		console.log(players);
+
+	}
+
+	function playRound() {
+		switchPlayer();
+		console.log(activePlayer);
+		console.log(tickedCase);
+		tickCase(tickedCase, activePlayer.marker);
+		gameboard.displayGameboard();
+		checkWinCondition(tickedCase, activePlayer.marker);
 	}
 	
-	return { playGame, tickedCase };
+	return { playGame, tickedCase, playRound };
 })();
+
+const boxes = document.querySelectorAll('.box');
+
+boxes.forEach((box) => {
+	box.addEventListener('click', (event) => {
+		console.log('Box:', event.target.id);
+		gameController.tickedCase = event.target.id;
+		console.log(gameController.tickedCase);
+		gameController.playRound();
+	})
+})
 
 gameController.playGame();

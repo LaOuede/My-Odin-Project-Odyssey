@@ -28,3 +28,8 @@ body {
 .box {
 	border: 1px solid black;
 }
+
+.box:hover {
+	cursor: pointer;
+	background-color: rgba(125, 125, 125, 0.5);
+}
