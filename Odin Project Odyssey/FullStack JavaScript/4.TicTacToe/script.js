@@ -1,10 +1,5 @@
 function createPlayer(name, marker) {
-	const score = 0;
-	const infos = () => {
-		return `${name}`;
-	}
-
-	return { name, marker, score, infos };
+	return { name, marker };
 }
 
 const gameboard = (function() {
@@ -31,22 +26,22 @@ const gameboard = (function() {
 			}
 			board.push(line);
 		}
-		console.log(gameboard.getBoard());
 	};
 
 	return { getBoard, displayGameboard, resetBoard };
 })();
 
 const gameController = (function() {
-	let activePlayer = null;
-
+	
 	let tickedCase = null;
 
 	let players = '';
-
+	
 	const addPlayers = (player1, player2) => {
 		return [createPlayer(player1, 'X'), createPlayer(player2, 'O')];
 	};
+	
+	let activePlayer = players[1];
 
 	const winCon = [
 		[0, 1, 2], [3, 4, 5], [6, 7, 8], // horizontal winCon
@@ -63,14 +58,11 @@ const gameController = (function() {
 	const checkWinCondition = (id, marker) => {
 		for (let element in winCon) {
 			if (winCon[element].includes(id)) {
-				console.log(winCon[element], 'OK');
 				for (let i = 0; i < 3; i++) {
-					console.log('Content', gameboard.getBoard[winCon[element][i]]);
 					if (gameboard.getBoard[winCon[element][i]] != marker) {
 						break;
 					}
 					if (i === 2) {
-						console.log('You win');
 						return true;
 					}
 				}
@@ -80,32 +72,27 @@ const gameController = (function() {
 	};
 
 	const tickCase = (id, marker) => {
-		console.log('tickCase:', id, marker);
 		tickedCase = parseInt(id);
 		if (!gameboard.getBoard[id]) {
 			gameboard.getBoard[id] = marker;
-			console.log(gameboard.getBoard[id]);
 			return true;
 		} else {
-			console.log(gameboard.getBoard[id]);
-			console.log('This case is already marked');
 			return false;
 		}
 	};
 
 	function playGame() {
-		console.log(gameController.players);
+		switchPlayer();
 		const infos = document.querySelector('.infos');
 		infos.innerHTML = '';
 		const playersInfos = document.createElement('div');
-		playersInfos.innerHTML = `<b>Player X:</b><br>${gameController.players[0].infos()}<br><br><b>Player O:</b><br>${gameController.players[1].infos()}`;
+		playersInfos.innerHTML =
+			`<b>Player X:</b><br>${gameController.players[0].name}<br><br><b>Player O:</b><br>${gameController.players[1].name}<br><br><b>First player is: ${gameController.getActivePlayer().name}</b>`;
 		infos.appendChild(playersInfos);
 		boxes.classList.remove('no-click');
 	}
 
 	function playRound(id, box) {
-		switchPlayer();
-		console.log(activePlayer);
 		if (tickCase(id, activePlayer.marker)) {
 			box.innerHTML = gameController.getActivePlayer().marker;
 			gameboard.displayGameboard();
@@ -113,9 +100,10 @@ const gameController = (function() {
 				boxes.classList.add('no-click');
 				return false;
 			}
+			switchPlayer();
 			return true;
 		}
-		switchPlayer();
+		// switchPlayer();
 		return true;
 	};
 
@@ -126,7 +114,6 @@ const gameController = (function() {
 		winner.classList.add('winner-announcement', 'blink');
 		infos.appendChild(winner);
 		const newGame = document.querySelector('#new');
-		console.log(`The winner is ${activePlayer.name}`);
 		newGame.textContent = 'New Game';
 
 		setTimeout(() => {
@@ -144,11 +131,8 @@ const btnNewG = document.querySelectorAll('button');
 
 box.forEach((box) => {
 	box.addEventListener('click', (event) => {
-		console.log(boxes.classList);
 		if (!(boxes.classList.contains('no-click'))) {
-			console.log('Box:', event.target.id);
 			gameController.tickedCase = event.target.id;
-			console.log(gameController.tickedCase);
 			if (!gameController.playRound(event.target.id, event.target)) {
 				gameController.endGame();
 			}
@@ -177,13 +161,9 @@ const form = document.querySelector('#players');
 
 form.addEventListener('submit', (event) => {
 	event.preventDefault();
-
 	const name1 = document.querySelector('#name1').value;
 	const name2 = document.querySelector('#name2').value;
-
 	gameController.players = gameController.addPlayers(name1, name2);
-	console.log(gameController.players[0]);
-
 	form.reset();
 	form.style.visibility = 'hidden';
 	gameController.playGame();
