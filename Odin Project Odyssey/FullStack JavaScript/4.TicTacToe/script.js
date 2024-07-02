@@ -1,13 +1,13 @@
-function createPlayer(name, marker, color) {
+function createPlayer(name, marker) {
 	const score = 0;
-	return { name, marker, color, score };
+	const infos = () => {
+		return `${name}`;
+	}
+
+	return { name, marker, score, infos };
 }
 
-// const player1 = createPlayer(prompt('Player One:', 'John'), 'X');
-// const player2 = createPlayer(prompt('Player Two:', 'Jim'), 'O');
-
 const gameboard = (function() {
-	
 	const board = Array(9).fill('');
 
 	const getBoard = () => board;
@@ -39,8 +39,15 @@ const gameboard = (function() {
 
 const gameController = (function() {
 	let activePlayer = null;
+
 	let tickedCase = null;
-	const players = [createPlayer('John', 'X', 'blue'), createPlayer('Jim', 'O', 'orange')];
+
+	let players = '';
+
+	const addPlayers = (player1, player2) => {
+		return [createPlayer(player1, 'X'), createPlayer(player2, 'O')];
+	};
+
 	const winCon = [
 		[0, 1, 2], [3, 4, 5], [6, 7, 8], // horizontal winCon
 		[0, 3, 6], [1, 4, 7], [2, 5, 8], // vertical winCon
@@ -50,7 +57,7 @@ const gameController = (function() {
 	const getActivePlayer = () => activePlayer;
 
 	const switchPlayer = () => {
-		activePlayer = (activePlayer === players[0]) ? players[1] : players[0];
+		activePlayer = (activePlayer === gameController.players[0]) ? gameController.players[1] : gameController.players[0];
 	}
 
 	const checkWinCondition = (id, marker) => {
@@ -80,7 +87,6 @@ const gameController = (function() {
 			console.log(gameboard.getBoard[id]);
 			return true;
 		} else {
-			// alert('This case is already marked');
 			console.log(gameboard.getBoard[id]);
 			console.log('This case is already marked');
 			return false;
@@ -88,32 +94,47 @@ const gameController = (function() {
 	};
 
 	function playGame() {
-		console.log(players);
-
+		console.log(gameController.players);
+		const infos = document.querySelector('.infos');
+		infos.innerHTML = '';
+		const playersInfos = document.createElement('div');
+		playersInfos.innerHTML = `<b>Player X:</b><br>${gameController.players[0].infos()}<br><br><b>Player O:</b><br>${gameController.players[1].infos()}`;
+		infos.appendChild(playersInfos);
+		boxes.classList.remove('no-click');
 	}
 
 	function playRound(id, box) {
 		switchPlayer();
 		console.log(activePlayer);
 		if (tickCase(id, activePlayer.marker)) {
-			box.style.backgroundColor = gameController.getActivePlayer().color;
-
+			box.innerHTML = gameController.getActivePlayer().marker;
 			gameboard.displayGameboard();
 			if (checkWinCondition(tickedCase, activePlayer.marker)) {
 				boxes.classList.add('no-click');
 				return false;
 			}
+			return true;
 		}
+		switchPlayer();
 		return true;
 	};
 
 	const endGame = () => {
-		console.log(`The winner is ${activePlayer.name}`);
+		const infos = document.querySelector('.infos');
+		const winner = document.createElement('div');
+		winner.innerHTML = `🏆<br>The winner is ${activePlayer.name}`;
+		winner.classList.add('winner-announcement', 'blink');
+		infos.appendChild(winner);
 		const newGame = document.querySelector('#new');
-		newGame.style.visibility = 'visible';
+		console.log(`The winner is ${activePlayer.name}`);
+		newGame.textContent = 'New Game';
+
+		setTimeout(() => {
+			winner.classList.remove('blink');
+		}, 3000);
 	};
 	
-	return { playGame, tickedCase, playRound, getActivePlayer, endGame };
+	return { addPlayers, playGame, tickedCase, playRound, getActivePlayer, endGame };
 })();
 
 const body = document.querySelector('body');
@@ -135,13 +156,16 @@ box.forEach((box) => {
 	})
 })
 
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', () => {
 	document.addEventListener('click', (event) => {
 		if (event.target.id === 'new') {
 			box.forEach((box) => {
-				box.style.backgroundColor = 'white';
+				box.innerHTML = '';
 			});
-			event.target.style.visibility = 'hidden';
+			document.querySelectorAll('body > *:not(#new)').forEach(element => {
+				element.classList.remove('blur-background');
+			});
+			event.target.textContent = 'Reset Game';
 			boxes.classList.remove('no-click');
 			gameboard.resetBoard();
 			gameController.playGame();
@@ -149,4 +173,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
 	});
 })
 
-gameController.playGame();
+const form = document.querySelector('#players');
+
+form.addEventListener('submit', (event) => {
+	event.preventDefault();
+
+	const name1 = document.querySelector('#name1').value;
+	const name2 = document.querySelector('#name2').value;
+
+	gameController.players = gameController.addPlayers(name1, name2);
+	console.log(gameController.players[0]);
+
+	form.reset();
+	form.style.visibility = 'hidden';
+	gameController.playGame();
+});
+
