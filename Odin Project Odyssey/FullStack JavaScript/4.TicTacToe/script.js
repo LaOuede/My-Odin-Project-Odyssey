@@ -103,7 +103,6 @@ const gameController = (function() {
 			switchPlayer();
 			return true;
 		}
-		// switchPlayer();
 		return true;
 	};
 
