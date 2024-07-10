@@ -1,94 +1,141 @@
 :root {
-	--primary: white;
-	--pink: rgb(255, 17, 120);
-	--light-blue: rgb(1, 255, 244);
-	--border-radius: 8px;
-	--shadow: rgb(1, 255, 244) 2px 2px 4px;
-	--shadowBtn: pink 2px 2px 4px;
-	font-family: Orbitron, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --primary: white;
+  --pink: rgb(255, 17, 120);
+  --light-blue: rgb(1, 255, 244);
+  --border-radius: 8px;
+  --shadow: rgb(1, 255, 244) 2px 2px 4px;
+  --shadowBtn: pink 2px 2px 4px;
+  font-family: 'Quicksand', sans-serif;
 }
 
-html, body {
-	height: 100%;
-	margin: 0;
+html,
+body {
+  height: 100%;
+  margin: 0;
 }
 
 body {
-	display: grid;
-	background-color: var(--primary);
-	grid-template-rows: 2fr 10fr 1fr;
+  display: grid;
+  background-color: var(--primary);
+  grid-template-rows: 1fr 10fr 1fr;
 }
 
 header {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border: 1px solid red;
+  display: flex;
+  justify-content: right;
+  align-items: center;
 }
 
-/* button {
-	margin-top: 2em;
-	margin-bottom: 2em;
-} */
+nav {
+  display: flex;
+  padding-right: 2em;
+  gap: 1em;
+}
+
+.navBar {
+  padding: 1em 0.5em 1em 0.5em;
+  color: white;
+  background-color: #6ca700;
+  border: solid;
+  border-color: #6ca700;
+  padding: 1em 3em 1em 3em;
+  border-radius: 0.5em;
+  box-shadow: 5px 5px 5px lightgray;
+  font-weight: bold;
+  font-family: 'Quicksand', sans-serif;
+}
+  
+.navBar:hover {
+  color: #6ca700;
+  background-color: white;
+  cursor: pointer;
+}
 
 .content {
-	/* display: flex; */
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
 }
 
 .title {
-	font-size: 2rem;
-	text-align: center;
-	color: transparent;
-	background-clip: text;
-	background-image: linear-gradient(to bottom, green 50%, white 50%);
-	-webkit-background-clip: text;
-	background-clip: text;
-	z-index: 1002;
-	position: relative;
-	top: 81px;
-
+  font-family: 'Ga Maamli';
+  font-size: 4vw;
+  text-align: center;
+  color: #6ca700;
 }
 
 img {
-	width: 60vw;
-	height: auto;
-	z-index: 1000;
-	margin-left: 3em;
+  width: 25vw;
+  height: auto;
+  margin-left: 3em;
+}
+
+.image {
+  display: flex;
+  justify-self: right;
+  z-index: 1001;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .headline {
-	display: grid;
-	background-color: white;
-	position: relative;
-}
+  font-size: 1.3em;
+  color: black;
+  text-align: center;
+  width: 50%;
+  align-self: center;
 
-#headlineText {
-	color: black;
-	background-color: rgba(255, 255, 255, 0.7);
-	border-radius: 8px;
-	border: 1px solid black;
-	width: 33vw;
-	padding: 2em;
-	z-index: 1001;
-	position: absolute;
-	top: 50%;
-	left: 75%;
-	transform: translate(-50%, -50%);
 }
 
 footer {
-	text-align: center;
-	background-color: var(--primary);
-	color: var(--light-blue);
-	text-shadow: var(--shadow);
+  padding-right: 2em;
+  text-align: right;
+  align-content:end;
+}
+
+.credit {
+  left: 75%;
 }
 
 .fa-github {
-	color: var(--light-blue);
-	font-size: 24px;
-	transition: transform 0.3s ease-in-out;
+  color: black;
+  font-size: 24px;
+  transition: transform 0.3s ease-in-out;
 }
 
 .fa-github:hover {
-	transform: rotate(360deg) scale(1.2);
+  transform: rotate(360deg) scale(1.2);
+}
+
+/* Font */
+@import url('https://fonts.googleapis.com/css2?family=Ga+Maamli&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+.container {
+  position: absolute;
+  width: 20vw;
+  height: 100vh;
+  --s: 60px;
+  --c1: #6ca700;
+  --c2: #406102;
+  --_g: radial-gradient(
+    25% 25% at 25% 25%,
+    var(--c1) 99%,
+    rgba(0, 0, 0, 0) 101%
+  );
+  background: var(--_g) var(--s) var(--s) / calc(2 * var(--s))
+      calc(2 * var(--s)),
+    var(--_g) 0 0 / calc(2 * var(--s)) calc(2 * var(--s)),
+    radial-gradient(50% 50%, var(--c2) 98%, rgba(0, 0, 0, 0)) 0 0 / var(--s)
+      var(--s),
+    repeating-conic-gradient(var(--c2) 0 50%, var(--c1) 0 100%)
+      calc(0.5 * var(--s)) 0 / calc(2 * var(--s)) var(--s);
+  z-index: 1000;
 }
