@@ -1,0 +1,41 @@
+.nav {
+	display: flex;
+}
+
+.choice-selector {
+	margin-top: 5em;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#choice-icon {
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+
+#choices-list {
+	position: absolute;
+	top: 100%;
+	display: none;
+	list-style-type: none;
+	margin: 0;
+	padding: 5px 0;
+	border: 1px solid black;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+	width: auto;
+	border-radius: 20px;
+}
+
+
+#choices-list li {
+	padding: 5px 10px;
+	cursor: pointer;
+}
+
+#choices-list li:hover {
+	border-radius: 20px;
+	background-color: rgba(91, 91, 91, 0.2);
+}
