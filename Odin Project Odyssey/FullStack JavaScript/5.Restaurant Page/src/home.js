@@ -23,7 +23,7 @@ export default function displayHome() {
   const image = document.createElement('div');
   image.className = 'image';
   const img = document.createElement('img');
-  img.src = '../images/Restaurant.JPG';
+  img.src = '../images/Restaurant.jpg';
   image.appendChild(img);
   homeBlock.appendChild(image);
 
