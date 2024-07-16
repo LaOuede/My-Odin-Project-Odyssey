@@ -1,11 +1,8 @@
 :root {
-  --primary: white;
-  --pink: rgb(255, 17, 120);
-  --light-blue: rgb(1, 255, 244);
+  --primary-color: #6ca700;
   --border-radius: 8px;
-  --shadow: rgb(1, 255, 244) 2px 2px 4px;
-  --shadowBtn: pink 2px 2px 4px;
-  font-family: 'Quicksand', sans-serif;
+  --shadowBox: 5px 5px 5px lightgray;
+  font-family: 'Quicksand';
 }
 
 html,
@@ -16,11 +13,11 @@ body {
 
 body {
   display: grid;
-  background-color: var(--primary);
   grid-template-rows: 1fr 10fr 1fr;
 }
 
 header {
+  height: 10vh;
   display: flex;
   justify-content: right;
   align-items: center;
@@ -35,39 +32,45 @@ nav {
 .navBar {
   padding: 1em 0.5em 1em 0.5em;
   color: white;
-  background-color: #6ca700;
+  background-color: var(--primary-color);
   border: solid;
-  border-color: #6ca700;
+  border-color: var(--primary-color);
   padding: 1em 3em 1em 3em;
-  border-radius: 0.5em;
-  box-shadow: 5px 5px 5px lightgray;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadowBox);
   font-weight: bold;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Quicksand';
 }
-  
+
 .navBar:hover {
-  color: #6ca700;
+  color: var(--primary-color);
   background-color: white;
   cursor: pointer;
 }
 
 .content {
   display: grid;
+}
+
+.homeBlock {
+  display: grid;
   grid-template-columns: 1fr 2fr;
   align-items: center;
 }
 
 .title {
-  font-family: 'Ga Maamli';
+  font-family: 'Ga Maamli', sans-serif;
   font-size: 4vw;
   text-align: center;
-  color: #6ca700;
+  color: var(--primary-color);
 }
 
 img {
   width: 25vw;
   height: auto;
   margin-left: 3em;
+  box-shadow: 5px 5px 5px gray;
+  border-radius: 0 16px 0 16px;
 }
 
 .image {
@@ -89,13 +92,86 @@ img {
   text-align: center;
   width: 50%;
   align-self: center;
+}
 
+.menuList {
+  display: grid;
+  grid-template-rows: 1fr, 6fr;
+  align-items: center;
+}
+
+.dishes {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 3em;
+}
+
+.dishesCategory {
+  font-family: 'Ga Maamli', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 2em;
+  color: var(--primary-color);
+}
+
+.item {
+  color: black;
+  min-width: 20vh;
+  max-width: 40vw;
+  border-radius: var(--border-radius);
+  border: 1px solid black;
+  font-family: 'Quicksand';
+  font-size: 1.3rem;
+  padding: 2em;
+  margin: 1em;
+  box-shadow: var(--shadowBox);
+  transition: all 0.3s ease;
+}
+
+.item:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.elements {
+  width: 35vw;
+  padding: 1rem;
+  border: 1px solid black;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadowBox);
+  margin-bottom: 1em;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.elements h2 {
+  color: var(--primary-color);
+  font-family: 'Ga Maamli', sans-serif;
+}
+
+.elements p,
+.elements ul {
+  color: black;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.2rem;
+}
+
+.elements ul {
+  list-style: none;
+  padding: 0;
+}
+
+.elements ul li {
+  padding: 0.5rem 0;
 }
 
 footer {
   padding-right: 2em;
   text-align: right;
-  align-content:end;
+  align-content: end;
 }
 
 .credit {
@@ -119,23 +195,27 @@ footer {
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
 
 .container {
-  position: absolute;
+  position: fixed;
   width: 20vw;
   height: 100vh;
   --s: 60px;
-  --c1: #6ca700;
+  --c1: var(--primary-color);
   --c2: #406102;
   --_g: radial-gradient(
     25% 25% at 25% 25%,
     var(--c1) 99%,
     rgba(0, 0, 0, 0) 101%
   );
-  background: var(--_g) var(--s) var(--s) / calc(2 * var(--s))
-      calc(2 * var(--s)),
+  background:
+    var(--_g) var(--s) var(--s) / calc(2 * var(--s)) calc(2 * var(--s)),
     var(--_g) 0 0 / calc(2 * var(--s)) calc(2 * var(--s)),
     radial-gradient(50% 50%, var(--c2) 98%, rgba(0, 0, 0, 0)) 0 0 / var(--s)
       var(--s),
     repeating-conic-gradient(var(--c2) 0 50%, var(--c1) 0 100%)
       calc(0.5 * var(--s)) 0 / calc(2 * var(--s)) var(--s);
   z-index: 1000;
+}
+
+.no-show {
+  display: none;
 }
