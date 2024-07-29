@@ -1,49 +1,52 @@
-/* || general styles */
-
-html {
-  font-family: "helvetica neue", helvetica, arial, sans-serif;
-}
-
 body {
-  width: 800px;
+  font: 1em sans-serif;
+  width: 200px;
+  padding: 0;
   margin: 0 auto;
 }
 
-h1,
-h2 {
-  font-family: "Faster One", cursive;
+form {
+  max-width: 200px;
 }
 
-/* header styles */
-
-h1 {
-  font-size: 4rem;
-  text-align: center;
+p * {
+  display: block;
 }
 
-header p {
-  font-size: 1.3rem;
-  font-weight: bold;
-  text-align: center;
+input#mail {
+  appearance: none;
+  width: 100%;
+  border: 1px solid #333;
+  margin: 0;
+
+  font-family: inherit;
+  font-size: 90%;
+
+  box-sizing: border-box;
 }
 
-/* section styles */
-
-section article {
-  width: 33%;
-  float: left;
+/* This is our style for the invalid fields */
+input.invalid {
+  border-color: #900;
+  background-color: #fdd;
 }
 
-section p {
-  margin: 5px 0;
+input:focus:invalid {
+  outline: none;
 }
 
-section ul {
-  margin-top: 0;
+/* This is the style of our error messages */
+.error {
+  width: 100%;
+  padding: 0;
+
+  font-size: 80%;
+  color: white;
+  background-color: #900;
+  border-radius: 0 0 5px 5px;
+  box-sizing: border-box;
 }
 
-h2 {
-  font-size: 2.5rem;
-  letter-spacing: -5px;
-  margin-bottom: 10px;
+.error.active {
+  padding: 0.3em;
 }
