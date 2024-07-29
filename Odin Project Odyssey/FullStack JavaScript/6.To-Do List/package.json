@@ -1,0 +1,30 @@
+{
+  "name": "6.To-Do List",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch",
+    "build": "webpack",
+    "format": "prettier --write ."
+  },
+  "keywords": [],
+  "author": "LaOuede",
+  "license": "ISC",
+  "description": "a To do list using Javascript",
+  "devDependencies": {
+    "@eslint/js": "^9.7.0",
+    "css-loader": "^7.1.2",
+    "eslint": "^9.7.0",
+    "file-loader": "^6.2.0",
+    "globals": "^15.8.0",
+    "html-webpack-plugin": "^5.6.0",
+    "prettier": "^3.3.3",
+    "style-loader": "^4.0.0",
+    "url-loader": "^4.1.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "date-fns": "^3.6.0"
+  }
+}
