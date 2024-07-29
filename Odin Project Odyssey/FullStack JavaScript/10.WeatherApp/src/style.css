@@ -1,0 +1,51 @@
+:root {
+  --primary-color: #6ca700;
+  --border-radius: 8px;
+  --shadowBox: 5px 5px 5px lightgray;
+  font-family: 'Exo 2';
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: grid;
+  grid-template-rows: 1fr 10fr 1fr;
+  border: red solid 5px;
+}
+
+/* HEADER */
+header {
+  border: blue solid 3px;
+}
+
+/* DISPLAY */
+.display {
+  border: orange solid 3px;
+}
+
+/* FOOTER */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+footer {
+  padding-right: 2em;
+  text-align: center;
+  align-content: center;
+  border: purple solid 3px;
+}
+
+.fa-github {
+  color: black;
+  font-size: 24px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.fa-github:hover {
+  transform: rotate(360deg) scale(1.2);
+}
+
+/* FONT */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
