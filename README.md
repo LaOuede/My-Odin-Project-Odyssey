@@ -28,16 +28,16 @@
 - [x] HTML Fundamentals
 - [x] CSS Fundamentals
 - [x] CSS : Flexbox
-- [ ] JavaScript Fundamentals
+- [x] JavaScript Fundamentals
 
 <h3 align="left">Full Stack JavaScript</h3>
 
-- [ ] CSS : Grid and Forms
-- [ ] JavaScript
-- [ ] Asynchronicity and Promises
-- [ ] Git
-- [ ] Testing
-- [ ] Accessibility
-- [ ] Responsive Design
+- [x] CSS : Grid and Forms
+- [x] JavaScript
+- [x] Asynchronicity and Promises
+- [x] Git
+- [x] Testing
+- [x] Accessibility
+- [x] Responsive Design
 - [ ] React
 - [ ] NodeJS
