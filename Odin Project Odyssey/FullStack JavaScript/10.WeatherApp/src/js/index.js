@@ -11,6 +11,8 @@ form.addEventListener('submit', async (event) => {
   const city = document.querySelector('#city').value;
   data = await getWeather(city);
 
+  console.log(data);
+
   dataWeather.getInfos(data);
   dataWeather.displayForecast();
   form.reset();
